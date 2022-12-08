@@ -1,0 +1,27 @@
+header{
+background-image: url(../assets/img-header.png);
+height: 100vh;
+width: 100vw;
+background-size: contain;
+background-repeat: no-repeat;
+}
+
+.loga-nav{
+padding-left: 30px;
+padding-right: 30px;
+padding-top: 20px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+flex-direction: row;
+}
+
+.logo{
+    width: 25%
+}
+
+.header-text{
+    color: white;
+    text-align: center;
+    padding-top: 3%;
+}
