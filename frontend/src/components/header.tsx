@@ -6,7 +6,7 @@ import './header.css';
 interface IHeaderProps {
 }
 
-const Header: React.FunctionComponent<IHeaderProps> = (props) => {
+const Header: React.FunctionComponent<IHeaderProps> = () => {
     return (
         <header className="header">
         <div className = "loga-nav">
