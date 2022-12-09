@@ -13,7 +13,7 @@ const Header: React.FunctionComponent<IHeaderProps> = () => {
           <img className = "logo" src={logo} alt="logo-Sür" />
           <img className = "burger" src = {burger} alt = "" />
         </div>
-        <h1 className="header-text">F*uck fashion</h1>
+        <h1 className="header-text">F*ck fashion</h1>
       </header>
     )
 };

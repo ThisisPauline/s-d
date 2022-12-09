@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './App.css'
 import Articles from './components/articles';
+import Footer from './components/footer';
 import Header from './components/header';
 
 
@@ -12,6 +13,7 @@ const App: React.FunctionComponent<IAppProps> = () => {
 <div>
       <Header />
     <Articles /> 
+    <Footer />
     </div>
 
       )

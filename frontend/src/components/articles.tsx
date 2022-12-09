@@ -6,6 +6,7 @@ interface Product {
   image: string;
   title: string;
   price: number;
+  category : string;
 }
 
 const Articles = () => {
@@ -37,11 +38,15 @@ const Articles = () => {
         </div>
       </div>
       <div className="product-flexbox">
-        {resData.map((product) => (
+        {resData
+        .filter(product => product.category != "electronics")
+        .map((product) => (
           <div className="individual-product">
+            <a href="http://www.google.fr"> 
             <img className="image-product" src={product.image} />
             <p className="product-title">{product.title}</p>
             <p className="product-price">{product.price}€</p>
+            </a>
           </div>
         ))}
       </div>
