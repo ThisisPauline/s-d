@@ -22,9 +22,13 @@ const Articles = () => {
   if (resData == null) return <p>Loading...</p>;
 
   return( 
-  <div>
-    <img src={resData[0].image} />
-    <p>{resData[0].title}</p>
+  <div>{resData.map(product => 
+    <img src={product.image} />
+  )}
+
+  
+
+
   </div>
   );
 };
