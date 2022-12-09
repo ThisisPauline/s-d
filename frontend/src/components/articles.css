@@ -1,0 +1,56 @@
+.image-product{
+    width: clamp(100px, 140px, 160px);
+}
+
+.product-flexbox{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-right:20px;
+    margin-left: 20px;
+    gap: 20px;
+}
+
+.individual-product{
+    width: 140px;
+    text-align: center;
+    gap: 20px;
+}
+
+.product-price{
+    font-family: teko;
+    color: #960404;
+}
+
+.product-title{
+    font-family: teko;
+  
+}
+
+.button-category{
+background-color: #960404 ;
+border-radius: 0;
+color: white;
+font-family: teko;
+font-size: 20px;
+width: 200px;
+}
+
+.category{
+    margin-top: 40px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 50px;
+    
+}
+
+.sort-by-title{
+    font-family: teko;
+    font-size: 20px;
+    margin-right: 15px;
+}

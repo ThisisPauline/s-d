@@ -1,9 +1,11 @@
 import React, { useEffect, useState, Fragment } from "react";
 import axios, { AxiosResponse } from "axios";
+import "./articles.css";
 
 interface Product {
   image: string;
   title: string;
+  price: number;
 }
 
 const Articles = () => {
@@ -21,15 +23,29 @@ const Articles = () => {
 
   if (resData == null) return <p>Loading...</p>;
 
-  return( 
-  <div>{resData.map(product => 
-    <img src={product.image} />
-  )}
-
-  
-
-
-  </div>
+  return (
+    <div>
+      <div className="category">
+        <button className="button-category">Categories</button>
+        <div className="sort-by">
+          <label className="sort-by-title" htmlFor="sort-by">Sort by:</label>
+          <select className="sort-by" id="sort-by">
+            <option value="price">Price</option>
+            <option value="Rating">Rating</option>
+            <option value="popularity">Popularity</option>
+          </select>
+        </div>
+      </div>
+      <div className="product-flexbox">
+        {resData.map((product) => (
+          <div className="individual-product">
+            <img className="image-product" src={product.image} />
+            <p className="product-title">{product.title}</p>
+            <p className="product-price">{product.price}€</p>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
 
