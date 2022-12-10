@@ -1,8 +1,10 @@
 import * as React from 'react';
 import './App.css'
-import Articles from './components/articles';
 import Footer from './components/footer';
 import Header from './components/header';
+import ArticleListPage from './pages/ArticlesListPage';
+import SingleProduct from './pages/singleProduct';
+import { Routes, Route } from "react-router-dom";
 
 
 interface IAppProps {
@@ -12,7 +14,12 @@ const App: React.FunctionComponent<IAppProps> = () => {
   return (
 <div>
       <Header />
-    <Articles /> 
+      <main className="main-container">
+        <Routes>
+          <Route path="/" element={<ArticleListPage />} />
+          <Route path="/products/:id" element={<SingleProduct />} />
+        </Routes>
+      </main>
     <Footer />
     </div>
 

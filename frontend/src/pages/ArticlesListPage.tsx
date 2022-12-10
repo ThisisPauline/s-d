@@ -1,12 +1,14 @@
-import React, { useEffect, useState, Fragment } from "react";
-import axios, { AxiosResponse } from "axios";
-import "./articles.css";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import "./articles.css"
+import { Link } from "react-router-dom";
 
 interface Product {
   image: string;
   title: string;
   price: number;
   category : string;
+  id: number;
 }
 
 const Articles = () => {
@@ -42,11 +44,11 @@ const Articles = () => {
         .filter(product => product.category != "electronics")
         .map((product) => (
           <div className="individual-product">
-            <a href="http://www.google.fr"> 
+           <Link to={`/products/${product.id}`} key={product.id}>
             <img className="image-product" src={product.image} />
             <p className="product-title">{product.title}</p>
             <p className="product-price">{product.price}€</p>
-            </a>
+            </Link>
           </div>
         ))}
       </div>
