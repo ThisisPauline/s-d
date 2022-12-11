@@ -1,12 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import "./SingleProduct.css"
 
 type Object = {
   id: number;
   category: string;
   description: string;
-  image:string;
+  image: string;
   title: string;
 };
 
@@ -14,8 +15,6 @@ const SingleProduct = () => {
   const [product, setProduct] = useState<Object | any>();
 
   const { id } = useParams();
-
-  
 
   useEffect(() => {
     const source = axios.CancelToken.source();
@@ -32,21 +31,33 @@ const SingleProduct = () => {
     };
   }, []);
 
-  
-if(product === undefined) return <p>"Loading..."</p>
+  if (product === undefined) return <p>Loading...</p>;
   console.log(product);
 
+  return (
+    <div>
+      <div className="go-back">
+      <Link to={`/`} key={product}>
+        <img src="" alt=""/>
+        <p>Go back to all</p>
+      </Link>
+      </div>
+    <div className="product-mobile">
+      <p className="product-title">{product.title}</p>
+      <div className="flexbox-product">
+        <div>
+          <img className="img-singleProduct" src={product.image} />
+        </div>
+        <div>
+          <p className= "product-description">{product.description}</p>
+          <p className="price">{product.price} euros</p>
 
-  return <div>
-   
-  <p>{product.title}</p>
-  <img src={product.image} /> 
-  <p>{product.description}</p>
-  <p>{product.price} euros</p>
-
-  <button>Add to cart</button>
-  
-  </div>
+          <button>Add to cart</button>
+          </div>
+        </div>
+      </div>
+      </div>
+  );
 };
 
 export default SingleProduct;

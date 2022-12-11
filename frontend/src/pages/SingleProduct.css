@@ -1,0 +1,45 @@
+.img-singleProduct{
+    width: 150px;
+}
+.product-mobile{
+    text-align: center;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-top: 50px;
+}
+
+.product-title{
+    font-family: teko;
+    text-transform: uppercase;
+    font-size: 30px;
+}
+
+.product-description{
+    font-family: teko;
+    font-size: 20px;
+    font-weight: 100;
+}
+
+.price{
+    font-family: teko;
+    font-size: 30px;
+}
+button{
+    background-color: #960404;
+    color: white;
+    font-weight: 900;
+    font-family: teko;
+    font-size: 25px;
+    border-radius: 0px;
+    border: solid 1px;
+    padding-top: 10px;
+    padding-bottom: 10px; 
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+button:hover{
+    border-color: #960404;
+    background-color: white;
+    color:#960404
+}

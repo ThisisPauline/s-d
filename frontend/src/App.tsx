@@ -3,7 +3,7 @@ import './App.css'
 import Footer from './components/footer';
 import Header from './components/header';
 import ArticleListPage from './pages/ArticlesListPage';
-import SingleProduct from './pages/singleProduct';
+import SingleProduct from './pages/SingleProduct';
 import { Routes, Route } from "react-router-dom";
 
 
