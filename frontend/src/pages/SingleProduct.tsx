@@ -2,12 +2,16 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-interface Product {
+type Object = {
+  id: number;
+  category: string;
+  description: string;
+  image:string;
   title: string;
-}
+};
 
 const SingleProduct = () => {
-  const [product, setProduct] = useState<Product[]>();
+  const [product, setProduct] = useState<Object | any>();
 
   const { id } = useParams();
 
@@ -17,7 +21,7 @@ const SingleProduct = () => {
     const source = axios.CancelToken.source();
 
     axios
-      .get<Product[]>(`https://fakestoreapi.com/products/${id}`, {
+      .get<Object[]>(`https://fakestoreapi.com/products/${id}`, {
         cancelToken: source.token,
       })
       .then((response) => response.data)
@@ -28,10 +32,21 @@ const SingleProduct = () => {
     };
   }, []);
 
+  
+if(product === undefined) return <p>"Loading..."</p>
   console.log(product);
 
 
-  return <div>Hello</div>
+  return <div>
+   
+  <p>{product.title}</p>
+  <img src={product.image} /> 
+  <p>{product.description}</p>
+  <p>{product.price} euros</p>
+
+  <button>Add to cart</button>
+  
+  </div>
 };
 
 export default SingleProduct;
