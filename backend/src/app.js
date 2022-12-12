@@ -2,9 +2,17 @@ const express = require("express");
 
 const app = express();
 
+app.use(express.json());
+
+const cors = require("cors");
+
+app.use(cors());
+
 const database = require("./database");
 
 const BACKEND_PORT = process.env.BACKEND_PORT ?? 5005;
+
+const articleRouter = require("./articles/articleRouter");
 
 app.get("/", (req, res) => {
   let output = "";
@@ -32,3 +40,5 @@ app.get("/", (req, res) => {
 app.listen(BACKEND_PORT, () => {
   console.log("Listening on port", BACKEND_PORT);
 });
+
+app.use("/articles", articleRouter);
