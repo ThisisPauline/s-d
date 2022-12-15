@@ -2,12 +2,12 @@ import * as React from 'react';
 import './App.css'
 import Footer from './components/footer';
 import Header from './components/header';
-import ArticleListPage from './pages/ArticlesListPage';
+import Home from "./pages/Home";
 import SingleProduct from './pages/SingleProduct';
 import { Routes, Route } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from 'react';
-import ArticlesAdded from "./pages/articlesAdded"
+import ArticlesAdded from "./pages/ArticlesAdded"
 
 interface IAppProps {
 }
@@ -32,10 +32,9 @@ const App: React.FunctionComponent<IAppProps> = () => {
 
   return (
 <div>
-      <Header />
       <main className="main-container">
         <Routes>
-          <Route path="/" element={<ArticleListPage />} />
+          <Route path="/" element={<Home />} />
           <Route path="/products/:id" element={<SingleProduct />} />
           <Route path="/articlesAdded" element={<ArticlesAdded />} />
         </Routes>
@@ -43,7 +42,6 @@ const App: React.FunctionComponent<IAppProps> = () => {
     
     <Footer />
     </div>
-
       )
 };
 

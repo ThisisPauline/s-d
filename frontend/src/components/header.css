@@ -6,7 +6,7 @@ background-size: cover;
 background-repeat: no-repeat;
 }
 
-.loga-nav{
+.logo-nav{
 padding-left: 30px;
 padding-right: 30px;
 padding-top: 20px;
@@ -24,4 +24,13 @@ flex-direction: row;
     color: white;
     text-align: center;
     padding-top: 3%;
+}
+
+    
+    .login-icon{
+        width: 30px;
+    }
+
+.basket-icon{
+    width: 30px;
 }
