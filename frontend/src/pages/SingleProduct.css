@@ -24,22 +24,3 @@
     font-family: teko;
     font-size: 30px;
 }
-button{
-    background-color: #960404;
-    color: white;
-    font-weight: 900;
-    font-family: teko;
-    font-size: 25px;
-    border-radius: 0px;
-    border: solid 1px;
-    padding-top: 10px;
-    padding-bottom: 10px; 
-    padding-left: 25px;
-    padding-right: 25px;
-}
-
-button:hover{
-    border-color: #960404;
-    background-color: white;
-    color:#960404
-}

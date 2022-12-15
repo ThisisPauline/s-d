@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import TopMenu from "../components/top-menu";
 import "./SingleProduct.css"
 
 type Object = {
@@ -36,6 +37,7 @@ const SingleProduct = () => {
 
   return (
     <div>
+      <TopMenu />
       <div className="go-back">
       <Link to={`/`} key={product}>
         <img src="" alt=""/>

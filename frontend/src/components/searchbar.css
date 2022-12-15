@@ -1,0 +1,16 @@
+.search-bar {
+  width: 80%;
+  margin-top: 3%;
+  border: 3px solid;
+  padding: 20M;
+  align-self: center;
+  padding: 2%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.Searchbox{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

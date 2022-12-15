@@ -1,30 +1,19 @@
-import logo from "../assets/logo.svg";
+
 import * as React from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
-import login from "../assets/user.svg";
-import basket from "../assets/bag.svg"
+import TopMenu from "./top-menu";
 
-interface IHeaderProps {}
-
-const Header: React.FunctionComponent<IHeaderProps> = () => {
+const Header = () => {
   return (
     <header className="header">
-      <div className="logo-nav">
-        <Link to="/">
-          <img className="logo" src={logo} alt="logo-Sür" />
-        </Link>
-          <Link to="/">
-            <img className="login-icon" src={login} alt="" />
-          </Link>
-          <Link to="/">
-            <img className="basket-icon" src={basket} alt="" />
-          </Link>
-      </div>
-      <h1 className="header-text">Give your clothes a second chance</h1>
+     <TopMenu />
+      <h1 className="header-text">Give your clothes a second life</h1>
+      <div className="flex-button">
       <Link to="/ArticlesAdded">
-        <button>I want to sell my clothes</button>
+        <button className="sell">I want to sell my clothes</button>
       </Link>
+      </div>
     </header>
   );
 };

@@ -29,7 +29,6 @@ const Articles = () => {
   return (
     <div>
       <div className="category">
-        <button className="button-category">Categories</button>
         <div className="sort-by">
           <label className="sort-by-title" htmlFor="sort-by">Sort by:</label>
           <select className="sort-by" id="sort-by">

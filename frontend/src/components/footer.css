@@ -1,8 +1,10 @@
 .menu-footer{
     display: flex;
+    font-family: sans-serif;
 }
 
 .copyright{
+    font-family: sans-serif;
     text-align: center;
 }
 
