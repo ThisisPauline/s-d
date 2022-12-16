@@ -8,19 +8,77 @@
     margin-top: 50px;
 }
 
-.product-title{
-    font-family: teko;
+.product-title-indiv{
+    font-family: sans-serif;
     text-transform: uppercase;
     font-size: 30px;
+    line-height: 1.2;
+    
 }
 
-.product-description{
-    font-family: teko;
+.product-description-indiv{
+    font-family: sans-serif;
     font-size: 20px;
     font-weight: 100;
 }
 
-.price{
-    font-family: teko;
+.price-indiv{
+    font-family: sans-serif;
     font-size: 30px;
+}
+
+.addToCart{
+    font-family: sans-serif;
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #000;
+    cursor: pointer;
+    border: 3px solid;
+    padding: 0.25em 1.5em;
+    box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px,
+      5px 5px 0px 0px;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    text-align: center;
+}
+
+.addToCart:active{
+    box-shadow: 0px 0px 0px 0px;
+    top: 5px;
+    left: 5px;
+}
+
+.you-might-like{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 20%;
+    justify-content: center;
+}
+
+.you-might-like-title{
+    margin-top: 20%;
+    margin-bottom: 10%;
+    font-family: sans-serif;
+}
+
+.image-productAdded{
+    width: 100px;
+}
+
+.product-titleAdded{
+    font-family: sans-serif;
+    font-size: 15px;
+    color: black
+}
+
+.product-priceAdded{
+    font-family: sans-serif;
+    font-size: 15px;
+    color: black
 }

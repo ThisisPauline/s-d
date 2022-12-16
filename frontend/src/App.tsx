@@ -7,7 +7,6 @@ import SingleProduct from './pages/SingleProduct';
 import { Routes, Route } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from 'react';
-import ArticlesAdded from "./pages/ArticlesAdded"
 
 interface IAppProps {
 }
@@ -36,7 +35,6 @@ const App: React.FunctionComponent<IAppProps> = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products/:id" element={<SingleProduct />} />
-          <Route path="/articlesAdded" element={<ArticlesAdded />} />
         </Routes>
       </main>
     

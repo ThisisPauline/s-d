@@ -10,7 +10,7 @@ const Header = () => {
      <TopMenu />
       <h1 className="header-text">Give your clothes a second life</h1>
       <div className="flex-button">
-      <Link to="/ArticlesAdded">
+      <Link to="/Login">
         <button className="sell">I want to sell my clothes</button>
       </Link>
       </div>
