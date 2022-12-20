@@ -60,3 +60,14 @@ padding-right: 3%;
     font-size: 20px;
     margin-right: 15px;
 }
+
+.button-sorting{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    color: #213547;
+}
