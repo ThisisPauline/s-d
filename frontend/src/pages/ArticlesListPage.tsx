@@ -1,6 +1,4 @@
 import React, {
-  PropsWithChildren,
-  PropsWithoutRef,
   useEffect,
   useState,
 } from "react";
@@ -14,6 +12,9 @@ interface Product {
   price: number;
   category: string;
   id: number;
+  rating: object;
+  children?: React.ReactNode;
+  rate: number;
 }
 
 interface Articles {
@@ -22,6 +23,7 @@ interface Articles {
   category: string;
   id: number;
   images: string;
+  children?: React.ReactNode;
 }
 
 type Props = {
@@ -30,6 +32,9 @@ type Props = {
 
 const Articles: React.FC<Props> = ({ selectedCategory }) => {
   const [resData, setResData] = useState<Product[]>();
+  const [priceRating, setPriceRating] = useState<boolean>(false);
+  const [popularityRating, SetPopularityRating] = useState<boolean>(false);
+  const [rateRating, setRateRating] = useState<boolean>(false);
 
   useEffect(() => {
     axios
@@ -39,7 +44,7 @@ const Articles: React.FC<Props> = ({ selectedCategory }) => {
         console.log(data);
         setResData(data);
       });
-  }, []);
+  }, [priceRating, popularityRating, rateRating]);
 
   const [articles, setArticles] = useState<Articles[]>([]);
 
@@ -48,12 +53,30 @@ const Articles: React.FC<Props> = ({ selectedCategory }) => {
       .get<Articles[]>("http://localhost:5005/articles")
       .then((response) => response.data)
       .then((data) => setArticles(data));
-  }, []);
+  }, [priceRating, popularityRating, rateRating]);
 
   const handleSortingByPrice: React.MouseEventHandler<
     HTMLButtonElement
   > = () => {
-    resData?.sort((a, b) => (a.price > b.price ? 1 : -1));
+    setPriceRating(true);
+    SetPopularityRating(false);
+    setRateRating(false);
+  };
+
+  const handleSortingByRating: React.MouseEventHandler<
+    HTMLButtonElement
+  > = () => {
+    SetPopularityRating(true);
+    setRateRating(false);
+    setPriceRating(false);
+  };
+
+  const handleSortingByPopularity: React.MouseEventHandler<
+    HTMLButtonElement
+  > = () => {
+    setRateRating(true);
+    SetPopularityRating(false);
+    setPriceRating(false);
   };
 
   if (resData == null) return <p className="product-title">Loading...</p>;
@@ -61,54 +84,102 @@ const Articles: React.FC<Props> = ({ selectedCategory }) => {
   if (articles === undefined)
     return <p className="product-title">Loading...</p>;
 
-  const ProductEntry = ({product} : {product: Product | Articles}) => (
+  const ProductEntry = ({ product }: { product: Product | Articles }) => (
     <div className="individual-product">
       <Link to={`/products/${product.id}`} key={product.id}>
-        <img className="image-product" src={(product as Product).image ?? (product as Articles).images} />
-        <p className="product-title">{(product as Product).title ?? (product as Articles).name}</p>
+        <img
+          className="image-product"
+          src={(product as Product).image ?? (product as Articles).images}
+        />
+        <p className="product-title">
+          {(product as Product).title ?? (product as Articles).name}
+        </p>
         <p className="product-price">{product.price}€</p>
       </Link>
     </div>
   );
 
   return (
-    <div>
-      <div className="category">
-        <div className="sort-by">
-          <p>Sort by:</p>
-          <button onClick={handleSortingByPrice}>Price</button>
-          <button>Rating</button>
-          <button>Popularity</button>
+    <>
+      <div>
+        <div className="category">
+          <div className="sort-by">
+            <p>Sort by:</p>
+            <button onClick={handleSortingByPrice}>Price</button>
+            <button onClick={handleSortingByRating}>Rating</button>
+            <button onClick={handleSortingByPopularity}>Popularity</button>
+          </div>
         </div>
-      </div>
-      <div className="product-flexbox">
-        <>
-          {selectedCategory === "showAll"
-            ? resData
-                .filter((product) => product.category != "electronics")
-                .map(product => <ProductEntry {...{product}} />)
-            : resData
-                .filter((product) => product.category != "electronics")
-                .filter(
-                  (product) =>
-                    selectedCategory == null ||
-                    product.category === selectedCategory
-                )
-                .map(product => <ProductEntry {...{product}} />)}
-          {articles.length != 0 &&
-            (selectedCategory === "showAll"
-              ? articles.map(product => <ProductEntry {...{product}} />)
-              : articles
+        <div className="product-flexbox">
+          <>
+            {selectedCategory === "showAll"
+              ? priceRating
+                ? resData
+                    .filter((product) => product.category != "electronics")
+                    .sort((a, b) => (a.price > b.price ? 1 : -1))
+                    .map((product) => <ProductEntry {...{ product }} />)
+                : popularityRating
+                ? resData
+                    .filter((product) => product.category != "electronics")
+                    .sort((a, b) => (a.rating.count > b.rating.count ? -1 : 1))
+                    .map((product) => <ProductEntry {...{ product }} />)
+                : rateRating
+                ? resData
+                    .filter((product) => product.category != "electronics")
+                    .sort((a, b) => (a.rating.rate > b.rating.rate ? -1 : 1))
+                    .map((product) => <ProductEntry {...{ product }} />)
+                : resData
+                    .filter((product) => product.category != "electronics")
+                    .map((product) => <ProductEntry {...{ product }} />)
+              : priceRating
+              ? resData
+                  .filter((product) => product.category != "electronics")
                   .filter(
                     (product) =>
                       selectedCategory == null ||
                       product.category === selectedCategory
                   )
-                  .map(product => <ProductEntry {...{product}} />))}
-        </>
+                  .filter((product) => product.category != "electronics")
+                  .sort((a, b) => (a.price > b.price ? 1 : -1))
+                  .map((product) => <ProductEntry {...{ product }} />)
+              : popularityRating
+              ? resData
+                  .filter((product) => product.category != "electronics")
+                  .filter(
+                    (product) =>
+                      selectedCategory == null ||
+                      product.category === selectedCategory
+                  )
+                  .sort((a, b) => (a.rating.count > b.rating.count ? -1 : 1))
+                  .map((product) => <ProductEntry {...{ product }} />)
+              : rateRating
+              ? resData
+                  .filter((product) => product.category != "electronics")
+                  .filter(
+                    (product) =>
+                      selectedCategory == null ||
+                      product.category === selectedCategory
+                  )
+                  .sort((a, b) => (a.rating.rate > b.rating.rate ? -1 : 1))
+                  .map((product) => <ProductEntry {...{ product }} />)
+              : resData
+                  .filter((product) => product.category != "electronics")
+                  .map((product) => <ProductEntry {...{ product }} />)}
+
+            {articles.length != 0 &&
+              (selectedCategory === "showAll"
+                ? articles.map((product) => <ProductEntry {...{ product }} />)
+                : articles
+                    .filter(
+                      (product) =>
+                        selectedCategory == null ||
+                        product.category === selectedCategory
+                    )
+                    .map((product) => <ProductEntry {...{ product }} />))}
+          </>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
-
 export default Articles;

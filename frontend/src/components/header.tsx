@@ -18,7 +18,7 @@ const Header = () => {
       </div>
       <div className="marquee"> 
       <Marquee speed={120} gradient={false} direction={"right"} pauseOnHover={true} gradientWidth={3000} gradientColor={[1, 255, 255]} style={{fontSize: "2em", backgroundColor: "#000000", color:"white", height:"6vh"}}>
-  CLOTHES HAVE NO GENDER CLOTHES HAVE NO GENDER CLOTHES HAVE NO GENDER CLOTHES HAVE NO GENDER CLOTHES HAVE NO GENDER CLOTHES HAVE NO GENDER CLOTHES HAVE NO GENDER 
+   CLOTHES HAVE NO GENDER CLOTHES HAVE NO GENDER CLOTHES HAVE NO GENDER CLOTHES HAVE NO GENDER CLOTHES HAVE NO GENDER CLOTHES HAVE NO GENDER CLOTHES HAVE NO GENDER 
 </Marquee>
 </div>
     </header>
